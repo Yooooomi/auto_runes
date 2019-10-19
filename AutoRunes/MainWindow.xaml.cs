@@ -34,7 +34,8 @@ namespace AutoRunes
         {
             InitializeComponent();
 
-            /*mouseManager.enableMouseClicks();
+            /*windowManager.AssignWindow(LeagueOfLegendsWindowName);
+            mouseManager.enableMouseClicks();
             mouseManager.addListener(onMouseClick);*/
         }
 
@@ -48,10 +49,26 @@ namespace AutoRunes
 
         private void clickRune(Runes rune)
         {
-            Runes realRune = Runes.runes.Find(e => e.names[0] == rune.names[0] && e.type == rune.type);
+            Runes realRune;
+            
+            if (rune.type != Runes.RuneType.Button)
+            {
+                realRune = Runes.runes.Find(e => e.names[0] == rune.names[0] && e.type == rune.type);
+            }
+            else
+            {
+                realRune = Runes.buttons.Find(e => e.names[0] == rune.names[0] && e.type == rune.type);
+            }
 
             WindowManager.Rect rect = windowManager.GetWindowPos();
+            Position position = realRune.position;
+
             Position convertedPos = Runes.TransferPositionResolution(realRune.position, 1600, 900, rect.Right - rect.Left, rect.Bottom - rect.Top);
+
+            if (champSelect.IsChecked == true)
+            {
+                convertedPos.x += (int) (0.085 * (rect.Right - rect.Left));
+            }
 
             mouseManager.SetCursorPosition(rect.Left + convertedPos.x, rect.Top + convertedPos.y);
             mouseManager.Click();
@@ -94,6 +111,10 @@ namespace AutoRunes
             {
                 runes.runes[i].type = Runes.RuneType.Shard;
                 clickRune(runes.runes[i]);
+            }
+            if (clickOnSave.IsChecked == true)
+            {
+                clickRune(Runes.buttons.Find(e => e.type == Runes.RuneType.Button && e.names.Contains("save")));
             }
         }
 

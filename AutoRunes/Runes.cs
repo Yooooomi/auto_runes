@@ -29,6 +29,11 @@ namespace AutoRunes
             return newPos;
         }
 
+        static public List<Runes> buttons = new List<Runes>
+        {
+            new Runes(RuneType.Button, new List<String>() { "save" }, new Position(500, 161)),
+        };
+
         static public List<Runes> runes = new List<Runes>
         {
             new Runes(RuneType.PrimarySection, new List<String>() { "precision" }, new Position(163, 265)),
@@ -100,6 +105,7 @@ namespace AutoRunes
             Primary,
             Secondary,
             Shard,
+            Button,
         }
 
         public Runes(RuneType type, List<String> names, Position position)

@@ -8,17 +8,18 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="193*"/>
-            <ColumnDefinition Width="599*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="button" Content="Make the build" Margin="0,202,168,0" VerticalAlignment="Top" Click="onFocusClick" HorizontalAlignment="Right" Width="161" Grid.Column="1"/>
-        <TextBox x:Name="urlText" Height="23" Margin="162,169,168,0" TextWrapping="Wrap" VerticalAlignment="Top" AutomationProperties.HelpText="URL form mobafire" Grid.ColumnSpan="2"/>
-        <Label x:Name="label" Content="Auto runes (v0.1.0)" HorizontalAlignment="Left" VerticalAlignment="Top" Height="54" Width="305" FontFamily="Segoe UI Light" FontSize="36" Grid.ColumnSpan="2"/>
-        <CheckBox x:Name="lolOpen" Content="CheckBox" Margin="10,0,0,10" IsEnabled="False" Height="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="71"/>
-        <Button x:Name="button_Copy" Content="Check" HorizontalAlignment="Left" Margin="162,202,0,0" VerticalAlignment="Top" Width="161" Click="checkState" Grid.ColumnSpan="2"/>
-        <Slider x:Name="buildSpeed" VerticalAlignment="Bottom" Maximum="1000" Value="200" ValueChanged="buildSpeedChange" SmallChange="1" Margin="152,0,178,10" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Build speed" Margin="152,0,552,33" Grid.ColumnSpan="2" Height="22" VerticalAlignment="Bottom"/>
-        <TextBlock x:Name="buildSpeedText" TextWrapping="Wrap" Text="{Binding Value, ElementName=buildSpeed, StringFormat='\{0\}ms between clicks'}" Margin="0,0,178,33" HorizontalAlignment="Right" TextAlignment="Right" Width="191" Grid.Column="1" Height="22" VerticalAlignment="Bottom"/>
+        <Button x:Name="button" Content="Make the build" Margin="0,202,168,0" VerticalAlignment="Top" Click="onFocusClick" HorizontalAlignment="Right" Width="161"/>
+        <TextBox x:Name="urlText" Height="23" Margin="162,169,168,0" TextWrapping="Wrap" VerticalAlignment="Top" AutomationProperties.HelpText="URL form mobafire"/>
+        <Label x:Name="label" Content="Auto runes (v0.1.0)" HorizontalAlignment="Left" VerticalAlignment="Top" Height="54" Width="305" FontFamily="Segoe UI Light" FontSize="36"/>
+        <CheckBox x:Name="lolOpen" Content="Is LoL Open" Margin="10,0,0,10" IsEnabled="False" Height="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="130"/>
+        <Button x:Name="button_Copy" Content="Check" HorizontalAlignment="Left" Margin="162,202,0,0" VerticalAlignment="Top" Width="161" Click="checkState"/>
+        <Slider x:Name="buildSpeed" VerticalAlignment="Bottom" Maximum="1000" Value="200" ValueChanged="buildSpeedChange" SmallChange="1" Margin="152,0,178,10"/>
+        <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Build speed" Margin="152,0,552,33" Height="22" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="buildSpeedText" TextWrapping="Wrap" Text="{Binding Value, ElementName=buildSpeed, StringFormat='\{0\}ms between clicks'}" Margin="0,0,178,33" HorizontalAlignment="Right" TextAlignment="Right" Width="191" Height="22" VerticalAlignment="Bottom"/>
+        <CheckBox x:Name="champSelect" Content="Champ Select ?" Margin="339,205,352,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="clickOnSave" Content="Click on save at the end" HorizontalAlignment="Left" Margin="162,246,0,0" VerticalAlignment="Top" Width="249"/>
 
     </Grid>
 </Window>
