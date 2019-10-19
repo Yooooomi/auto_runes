@@ -18,8 +18,9 @@
         <Slider x:Name="buildSpeed" VerticalAlignment="Bottom" Maximum="1000" Value="200" ValueChanged="buildSpeedChange" SmallChange="1" Margin="152,0,178,10"/>
         <TextBlock x:Name="textBlock1" TextWrapping="Wrap" Text="Build speed" Margin="152,0,552,33" Height="22" VerticalAlignment="Bottom"/>
         <TextBlock x:Name="buildSpeedText" TextWrapping="Wrap" Text="{Binding Value, ElementName=buildSpeed, StringFormat='\{0\}ms between clicks'}" Margin="0,0,178,33" HorizontalAlignment="Right" TextAlignment="Right" Width="191" Height="22" VerticalAlignment="Bottom"/>
-        <CheckBox x:Name="champSelect" Content="Champ Select ?" Margin="339,205,352,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox x:Name="clickOnSave" Content="Click on save at the end" HorizontalAlignment="Left" Margin="162,246,0,0" VerticalAlignment="Top" Width="249"/>
+        <CheckBox x:Name="champSelect" Content="Are you in champ select ?" Margin="162,247,410,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="clickOnSave" Content="Click on save at the end" HorizontalAlignment="Left" Margin="162,287,0,0" VerticalAlignment="Top" Width="220"/>
+        <CheckBox x:Name="isInRunePage" Content="Are you in a rune page ? (not yet working)" HorizontalAlignment="Left" Margin="162,267,0,0" VerticalAlignment="Top" Width="293" IsEnabled="{Binding IsChecked, ElementName=champSelect}"/>
 
     </Grid>
 </Window>

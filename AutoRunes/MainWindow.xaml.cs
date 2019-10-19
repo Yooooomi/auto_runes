@@ -15,7 +15,6 @@ using System.Windows.Shapes;
 using Gma.System.MouseKeyHook;
 using System.Threading;
 using System.Diagnostics;
-using System.Linq;
 
 namespace AutoRunes
 {
@@ -25,10 +24,9 @@ namespace AutoRunes
     public partial class MainWindow : Window
     {
         const String LeagueOfLegendsWindowName = "LeagueClientUx";
-
-        WindowManager windowManager = new WindowManager();
-        MouseManager mouseManager = new MouseManager();
-        Parser parser = new Parser();
+        readonly WindowManager windowManager = new WindowManager();
+        readonly MouseManager mouseManager = new MouseManager();
+        readonly Parser parser = new Parser();
 
         public MainWindow()
         {
@@ -82,6 +80,11 @@ namespace AutoRunes
             windowManager.SetFocus();
 
             ProfileRunes runes = parser.Parse(urlText.Text);
+
+            if (false && isInRunePage.IsEnabled == true && isInRunePage.IsChecked == false)
+            {
+                clickRune(Runes.buttons.Find(e => e.type == Runes.RuneType.Button && e.names.Contains("edit_rune")));
+            }
 
             runes.primary.type = Runes.RuneType.PrimarySection;
             clickRune(runes.primary);

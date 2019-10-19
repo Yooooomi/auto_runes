@@ -32,6 +32,7 @@ namespace AutoRunes
         static public List<Runes> buttons = new List<Runes>
         {
             new Runes(RuneType.Button, new List<String>() { "save" }, new Position(500, 161)),
+            new Runes(RuneType.Button, new List<String>() { "edit_rune" }, new Position(545, 854)),
         };
 
         static public List<Runes> runes = new List<Runes>
