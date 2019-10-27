@@ -1,0 +1,17 @@
+{
+    "name": "Autorunes",
+    "version": "1.0",
+    "description": "Extension to interact directly with the WPF app",
+    "manifest_version": 2,
+    "permissions": [
+        "webNavigation",
+        "nativeMessaging"
+    ],
+    "browser_action": {
+        "default_title": "Autorunes"
+    },
+    "background": {
+        "scripts": ["index.js"],
+        "persistent": false
+    }
+}
