@@ -33,6 +33,7 @@ namespace AutoRunes
         {
             new Runes(RuneType.Button, new List<String>() { "save" }, new Position(500, 161)),
             new Runes(RuneType.Button, new List<String>() { "edit_rune" }, new Position(545, 854)),
+            new Runes(RuneType.Button, new List<String>() { "square" }, new Position(227, 842)),
         };
 
         static public List<Runes> runes = new List<Runes>
@@ -52,7 +53,7 @@ namespace AutoRunes
             new Runes(RuneType.Primary, new List<String>() { "arcane comet", "aftershock", "kleptomancy" }, new Position(266, 410)),
             new Runes(RuneType.Primary, new List<String>() { "phase rush", "guardian", "unsealed spellbook" }, new Position(346, 410)),
             
-            new Runes(RuneType.Primary, new List<String>() { "overheal", "cheap shot", "nullifying shot", "demolish", "hextech flashtraption" }, new Position(182, 536)),
+            new Runes(RuneType.Primary, new List<String>() { "overheal", "cheap shot", "nullifying orb", "demolish", "hextech flashtraption" }, new Position(182, 536)),
             new Runes(RuneType.Primary, new List<String>() { "triumph", "taste of blood", "manaflow band", "font of life", "magical footwear" }, new Position(266, 536)),
             new Runes(RuneType.Primary, new List<String>() { "presence of mind", "sudden impact", "nimbus cloak", "shield bash", "perfect timing" }, new Position(348, 536)),
             
@@ -75,7 +76,7 @@ namespace AutoRunes
             new Runes(RuneType.SecondarySection, new List<String>() { "resolve" }, new Position(763, 267)),
             new Runes(RuneType.SecondarySection, new List<String>() { "inspiration" }, new Position(763 + 50, 267)),
 
-            new Runes(RuneType.Secondary, new List<String>() { "overheal", "cheap shot", "nullifying shot", "demolish", "hextech flashtraption" }, new Position(586, 380)),
+            new Runes(RuneType.Secondary, new List<String>() { "overheal", "cheap shot", "nullifying orb", "demolish", "hextech flashtraption" }, new Position(586, 380)),
             new Runes(RuneType.Secondary, new List<String>() { "triumph", "taste of blood", "manaflow band", "font of life", "magical footwear" }, new Position(670, 380)),
             new Runes(RuneType.Secondary, new List<String>() { "presence of mind", "sudden impact", "nimbus cloak", "shield bash", "perfect timing" }, new Position(756, 380)),
 
@@ -86,6 +87,11 @@ namespace AutoRunes
             new Runes(RuneType.Secondary, new List<String>() { "coup de grace", "scorch", "overgrowth", "cosmic insight" }, new Position(586, 570)),
             new Runes(RuneType.Secondary, new List<String>() { "cut down", "waterwalking", "revitalize", "approach velocity" }, new Position(670, 570)),
             new Runes(RuneType.Secondary, new List<String>() { "last stand", "gathering storm", "unflinching", "time warp tonic" }, new Position(756, 570)),
+
+            new Runes(RuneType.Secondary, new List<String>() { "ravenous hunter" }, new Position(576, 572)),
+            new Runes(RuneType.Secondary, new List<String>() { "ingenious hunter" }, new Position(639, 572)),
+            new Runes(RuneType.Secondary, new List<String>() { "relentless hunter" }, new Position(700, 572)),
+            new Runes(RuneType.Secondary, new List<String>() { "ultimate hunter" }, new Position(764, 572)),
 
             new Runes(RuneType.Shard, new List<String>() { "diamond1" }, new Position(588, 646)),
             new Runes(RuneType.Shard, new List<String>() { "axe1" }, new Position(671, 646)),

@@ -45,7 +45,7 @@ namespace AutoRunes
             Debug.WriteLine((point.X - rect.Left).ToString() + " " + (point.Y - rect.Top).ToString());
         }
 
-        private void clickRune(Runes rune)
+        private void clickRune(Runes rune, bool indentLeft = false)
         {
             Runes realRune;
             
@@ -59,7 +59,11 @@ namespace AutoRunes
             }
 
             WindowManager.Rect rect = windowManager.GetWindowPos();
-            Position position = realRune.position;
+
+            if (indentLeft)
+            {
+                realRune.position.x -= 50;
+            }
 
             Position convertedPos = Runes.TransferPositionResolution(realRune.position, 1600, 900, rect.Right - rect.Left, rect.Bottom - rect.Top);
 
@@ -81,10 +85,12 @@ namespace AutoRunes
 
             ProfileRunes runes = parser.Parse(urlText.Text);
 
-            if (false && isInRunePage.IsEnabled == true && isInRunePage.IsChecked == false)
+            if (isInRunePage.IsEnabled == true && isInRunePage.IsChecked == false)
             {
                 clickRune(Runes.buttons.Find(e => e.type == Runes.RuneType.Button && e.names.Contains("edit_rune")));
             }
+
+            clickRune(Runes.buttons.Find(e => e.type == Runes.RuneType.Button && e.names.Contains("square")));
 
             runes.primary.type = Runes.RuneType.PrimarySection;
             clickRune(runes.primary);
@@ -94,17 +100,21 @@ namespace AutoRunes
                 clickRune(runes.runes[i]);
             }
 
+            Debug.WriteLine("First rune index: " + Runes.runes.FindIndex(e => e.names[0] == runes.primary.names[0] && e.type == Runes.RuneType.PrimarySection));
+            Debug.WriteLine("Secon rune index: " + Runes.runes.FindIndex(e => e.names[0] == runes.secondary.names[0] && e.type == Runes.RuneType.PrimarySection));
+
+            bool indentLeft = false;
             if (
-                Runes.runes.FindIndex(e => e.names[0] == runes.primary.names[0] && e.type == runes.primary.type)
+                Runes.runes.FindIndex(e => e.names[0] == runes.primary.names[0] && e.type == Runes.RuneType.PrimarySection)
                     <
-                Runes.runes.FindIndex(e => e.names[0] == runes.secondary.names[0] && e.type == runes.secondary.type)
+                Runes.runes.FindIndex(e => e.names[0] == runes.secondary.names[0] && e.type == Runes.RuneType.PrimarySection)
             )
             {
-                runes.secondary.position.x -= 50;
+                indentLeft = true;
             }
 
             runes.secondary.type = Runes.RuneType.SecondarySection;
-            clickRune(runes.secondary);
+            clickRune(runes.secondary, indentLeft);
             for (int i = 4; i < 4 + 2; i++)
             {
                 runes.runes[i].type = Runes.RuneType.Secondary;
