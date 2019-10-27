@@ -26,22 +26,26 @@ function sendMessage(msg) {
     port.postMessage(msg);
 }
 
+function checkIcon(url) {
+    if (url.includes('https://www.mobafire.com/league-of-legends/build')) {
+        setIcon(true);
+    } else {
+        setIcon(false);
+    }
+}
+
+chrome.tabs.onActivated.addListener((infos) => {
+    chrome.tabs.get(infos.tabId, (tab) => checkIcon(tab.url));
+});
+
+chrome.webNavigation.onCompleted.addListener((infos) => {
+    checkIcon(infos.url);
+});
+
 chrome.runtime.onInstalled.addListener(function() {
     console.log('Welcome to AutoRunes');
 });
 
-chrome.webNavigation.onCompleted.addListener(() => {
-    console.log('initial');
-    setIcon(false);
-});
-
 chrome.browserAction.onClicked.addListener(() => {
     sendMessage({ text: "Hello, my_application" });
-});
-
-chrome.webNavigation.onCompleted.addListener(() => {
-    console.log('build');
-    setIcon(true);
-}, {
-    url: [{urlContains: 'https://www.mobafire.com/league-of-legends/build'}],
 });
