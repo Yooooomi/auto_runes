@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using Gma.System.MouseKeyHook;
 using System.Threading;
 using System.Diagnostics;
+using System.IO;
+using System.Runtime.InteropServices;
 
 namespace AutoRunes
 {
@@ -30,9 +32,24 @@ namespace AutoRunes
 
         public MainWindow()
         {
+            File.AppendAllText("C:\\users\\timot\\output", "salut");
+            string[] args = Environment.GetCommandLineArgs();
+
+            if (args.Length > 1 && args[1].Contains("https://www.mobafire.com/league-of-legends/build/"))
+            {
+                foreach(var i in args)
+                {
+                    File.AppendAllText("C:\\users\\timot\\output", i);
+                }
+                // args[2] is inGame
+                bool inChampSelect = args[2] == "True";
+                autorunes(args[1], inChampSelect, true, true, 200);
+                Environment.Exit(0);
+            }
+
             InitializeComponent();
 
-            /*windowManager.AssignWindow(LeagueOfLegendsWindowName);
+/*            windowManager.AssignWindow(LeagueOfLegendsWindowName);
             mouseManager.enableMouseClicks();
             mouseManager.addListener(onMouseClick);*/
         }
@@ -45,17 +62,17 @@ namespace AutoRunes
             Debug.WriteLine((point.X - rect.Left).ToString() + " " + (point.Y - rect.Top).ToString());
         }
 
-        private void clickRune(Runes rune, bool indentLeft = false)
+        private void clickRune(Runes rune, bool isInChampSelect, int sleepTime, bool indentLeft = false)
         {
             Runes realRune;
             
             if (rune.type != Runes.RuneType.Button)
             {
-                realRune = Runes.runes.Find(e => e.names[0] == rune.names[0] && e.type == rune.type);
+                realRune = Runes.GetRune(rune.type, rune.names[0]);
             }
             else
             {
-                realRune = Runes.buttons.Find(e => e.names[0] == rune.names[0] && e.type == rune.type);
+                realRune = Runes.GetRune(rune.type, rune.names[0]);
             }
 
             WindowManager.Rect rect = windowManager.GetWindowPos();
@@ -67,68 +84,79 @@ namespace AutoRunes
 
             Position convertedPos = Runes.TransferPositionResolution(realRune.position, 1600, 900, rect.Right - rect.Left, rect.Bottom - rect.Top);
 
-            if (champSelect.IsChecked == true)
+            if (isInChampSelect == true && !realRune.position.alreadyTranslated)
             {
                 convertedPos.x += (int) (0.085 * (rect.Right - rect.Left));
             }
 
             mouseManager.SetCursorPosition(rect.Left + convertedPos.x, rect.Top + convertedPos.y);
             mouseManager.Click();
-            Thread.Sleep((int) buildSpeed.Value);
+            Thread.Sleep(sleepTime);
         }
 
-        private void onFocusClick(object sender, RoutedEventArgs ev)
+        private void autorunes(string url, bool inChampSelect, bool clickEditRune, bool clickSave, int sleepTime)
         {
-            if (!windowManager.isUsable() && !windowManager.AssignWindow(LeagueOfLegendsWindowName)) return;
-
+            if (!windowManager.AssignWindow(LeagueOfLegendsWindowName)) return;
             windowManager.SetFocus();
 
-            ProfileRunes runes = parser.Parse(urlText.Text);
+            ProfileRunes runes;
 
-            if (isInRunePage.IsEnabled == true && isInRunePage.IsChecked == false)
+            try
             {
-                clickRune(Runes.buttons.Find(e => e.type == Runes.RuneType.Button && e.names.Contains("edit_rune")));
+                runes = parser.Parse(url);
+            }
+            catch
+            {
+                return;
             }
 
-            clickRune(Runes.buttons.Find(e => e.type == Runes.RuneType.Button && e.names.Contains("square")));
+            if (clickEditRune)
+            {
+                clickRune(Runes.GetRune(Runes.RuneType.Button, "edit_rune"), inChampSelect, sleepTime);
+            }
+
+            clickRune(Runes.GetRune(Runes.RuneType.Button, "square"), inChampSelect, sleepTime);
 
             runes.primary.type = Runes.RuneType.PrimarySection;
-            clickRune(runes.primary);
+            clickRune(runes.primary, inChampSelect, sleepTime);
             for (int i = 0; i < 4; i++)
             {
                 runes.runes[i].type = Runes.RuneType.Primary;
-                clickRune(runes.runes[i]);
+                clickRune(runes.runes[i], inChampSelect, sleepTime);
             }
-
-            Debug.WriteLine("First rune index: " + Runes.runes.FindIndex(e => e.names[0] == runes.primary.names[0] && e.type == Runes.RuneType.PrimarySection));
-            Debug.WriteLine("Secon rune index: " + Runes.runes.FindIndex(e => e.names[0] == runes.secondary.names[0] && e.type == Runes.RuneType.PrimarySection));
 
             bool indentLeft = false;
             if (
-                Runes.runes.FindIndex(e => e.names[0] == runes.primary.names[0] && e.type == Runes.RuneType.PrimarySection)
+                Runes.GetRuneIndex(Runes.RuneType.PrimarySection, runes.primary.names[0])
                     <
-                Runes.runes.FindIndex(e => e.names[0] == runes.secondary.names[0] && e.type == Runes.RuneType.PrimarySection)
+                Runes.GetRuneIndex(Runes.RuneType.PrimarySection, runes.secondary.names[0])
             )
             {
                 indentLeft = true;
             }
 
             runes.secondary.type = Runes.RuneType.SecondarySection;
-            clickRune(runes.secondary, indentLeft);
+            clickRune(runes.secondary, inChampSelect, sleepTime, indentLeft);
             for (int i = 4; i < 4 + 2; i++)
             {
                 runes.runes[i].type = Runes.RuneType.Secondary;
-                clickRune(runes.runes[i]);
+                clickRune(runes.runes[i], inChampSelect, sleepTime);
             }
             for (int i = 6; i < 6 + 3; i++)
             {
                 runes.runes[i].type = Runes.RuneType.Shard;
-                clickRune(runes.runes[i]);
+                clickRune(runes.runes[i], inChampSelect, sleepTime);
             }
-            if (clickOnSave.IsChecked == true)
+            if (clickSave == true)
             {
-                clickRune(Runes.buttons.Find(e => e.type == Runes.RuneType.Button && e.names.Contains("save")));
+                clickRune(Runes.GetRune(Runes.RuneType.Button, "save"), inChampSelect, sleepTime);
             }
+        }
+
+        private void onFocusClick(object sender, RoutedEventArgs ev)
+        {
+            int sleepTime = (int) buildSpeed.Value;
+            autorunes(urlText.Text, champSelect.IsChecked.Value, isInRunePage.IsEnabled == true && isInRunePage.IsChecked == false, clickOnSave.IsChecked.Value, sleepTime);
         }
 
         private void checkState(object sender, RoutedEventArgs e)

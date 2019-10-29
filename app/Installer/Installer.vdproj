@@ -28,7 +28,19 @@
         "Entry"
         {
         "MsmKey" = "8:_3D47F9EDA1AA1B28297E8B1EBAD69FD6"
+        "OwnerKey" = "8:_B1EFB4C47F8F4609A642141EC3CA5261"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3D47F9EDA1AA1B28297E8B1EBAD69FD6"
         "OwnerKey" = "8:_1D5696E0F66F4F4EBADC5F38A9304F04"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4064B112ADA97D2E17993445EF37AD94"
+        "OwnerKey" = "8:_B1EFB4C47F8F4609A642141EC3CA5261"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -41,6 +53,12 @@
         {
         "MsmKey" = "8:_8E7D2D3D2631291C3AA0AEE608822F66"
         "OwnerKey" = "8:_1D5696E0F66F4F4EBADC5F38A9304F04"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B1EFB4C47F8F4609A642141EC3CA5261"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,7 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3D47F9EDA1AA1B28297E8B1EBAD69FD6"
+        "OwnerKey" = "8:_B1EFB4C47F8F4609A642141EC3CA5261"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -85,6 +103,18 @@
         "OwnerKey" = "8:_FBF408A812A1684BD1ADD89E500BCF53"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4064B112ADA97D2E17993445EF37AD94"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3D47F9EDA1AA1B28297E8B1EBAD69FD6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -103,6 +133,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -119,6 +157,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -182,6 +236,37 @@
                     }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_33EE90C7C9774335A5FE4C4E8F2274C7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4064B112ADA97D2E17993445EF37AD94"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_4064B112ADA97D2E17993445EF37AD94"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_33EE90C7C9774335A5FE4C4E8F2274C7"
@@ -368,15 +453,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Autorunes"
-        "ProductCode" = "8:{3BF5AA6A-A39E-43CA-9A99-962991B56087}"
-        "PackageCode" = "8:{EA3F0396-E3F5-403D-A4B0-B8AC89C49629}"
+        "ProductCode" = "8:{AB9DA695-6A23-44D6-9F96-17A09BABB6C0}"
+        "PackageCode" = "8:{99AF4CE3-AA04-43E6-9635-92A1AFC2303F}"
         "UpgradeCode" = "8:{C334B272-D5F5-4AF4-8031-F8E0A440FDFB}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:2.0.0"
         "Manufacturer" = "8:Yooooomi"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -783,8 +868,8 @@
                             "Type" = "3:15"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1258"
+                            "Setting" = "3:2"
+                            "Value" = "8:Now you can have any build in a second !"
                             "DefaultValue" = "8:#1258"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1003,6 +1088,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{594DEB32-0493-4E7C-86E4-80C3603BC18A}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B1EFB4C47F8F4609A642141EC3CA5261"
+            {
+            "SourcePath" = "8:..\\AutorunesLauncher\\obj\\Release\\AutoruneLauncher.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_33EE90C7C9774335A5FE4C4E8F2274C7"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{3445E270-1EA7-4D80-BF05-DD8EB5DD2224}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

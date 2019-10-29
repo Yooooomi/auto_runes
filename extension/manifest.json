@@ -1,12 +1,17 @@
 {
     "name": "Autorunes",
+    "author": "Yooooomi",
     "version": "1.0",
-    "description": "Extension to interact directly with the WPF app",
+    "description": "Extension to interact directly with native Autorunes APP",
     "manifest_version": 2,
+    "icons": {
+        "128": "assets/rune.png"
+    },
     "permissions": [
         "webNavigation",
         "nativeMessaging",
-        "tabs"
+        "tabs",
+        "contextMenus"
     ],
     "browser_action": {
         "default_title": "Autorunes"

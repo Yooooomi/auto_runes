@@ -10,11 +10,20 @@ namespace AutoRunes
     {
         public int x;
         public int y;
+        public bool alreadyTranslated;
 
         public Position(int x, int y)
         {
             this.x = x;
             this.y = y;
+            this.alreadyTranslated = false;
+        }
+
+        public Position(int x, int y, bool alreadyTranslated)
+        {
+            this.x = x;
+            this.y = y;
+            this.alreadyTranslated = alreadyTranslated;
         }
     }
 
@@ -26,14 +35,15 @@ namespace AutoRunes
 
             newPos.x = (int) (oldPos.x * (newWidth / oldWidth));
             newPos.y = (int) (oldPos.y * (newHeight / oldHeight));
+            newPos.alreadyTranslated = false;
             return newPos;
         }
 
         static public List<Runes> buttons = new List<Runes>
         {
             new Runes(RuneType.Button, new List<String>() { "save" }, new Position(500, 161)),
-            new Runes(RuneType.Button, new List<String>() { "edit_rune" }, new Position(545, 854)),
-            new Runes(RuneType.Button, new List<String>() { "square" }, new Position(227, 842)),
+            new Runes(RuneType.Button, new List<String>() { "edit_rune" }, new Position(491, 869, true)),
+            new Runes(RuneType.Button, new List<String>() { "square" }, new Position(93, 844)),
         };
 
         static public List<Runes> runes = new List<Runes>
@@ -105,6 +115,30 @@ namespace AutoRunes
             new Runes(RuneType.Shard, new List<String>() { "shield3" }, new Position(671, 755)),
             new Runes(RuneType.Shard, new List<String>() { "circle3" }, new Position(753, 755)),
         };
+
+        static public Runes GetRune(RuneType type, String name)
+        {
+            if (type == RuneType.Button)
+            {
+                return Runes.buttons.Find(e => e.type == type && e.names.Contains(name));
+            }
+            else
+            {
+                return Runes.runes.Find(e => e.type == type && e.names.Contains(name));
+            }
+        }
+
+        static public int GetRuneIndex(RuneType type, String name)
+        {
+            if (type == RuneType.Button)
+            {
+                return Runes.buttons.FindIndex(e => e.type == type && e.names.Contains(name));
+            }
+            else
+            {
+                return Runes.runes.FindIndex(e => e.type == type && e.names.Contains(name));
+            }
+        }
 
         public enum RuneType {
             PrimarySection,

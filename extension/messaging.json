@@ -1,9 +1,9 @@
 {
     "name": "com.yooooomi.autorunes",
     "description": "My Application",
-    "path": "C:\\Program Files (x86)\\Yooooomi\\Autorunes\\Autorunes.exe",
+    "path": "C:\\Program Files (x86)\\Yooooomi\\Autorunes\\AutoruneLauncher.exe",
     "type": "stdio",
     "allowed_origins": [
-      "chrome-extension://goboffdlcclhchocppkoejglfojhhoio/"
+      "chrome-extension://pefheflffhfnmoeiamhofclgpcolppnc/"
     ]
 }
