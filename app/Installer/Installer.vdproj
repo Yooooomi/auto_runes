@@ -28,13 +28,13 @@
         "Entry"
         {
         "MsmKey" = "8:_3D47F9EDA1AA1B28297E8B1EBAD69FD6"
-        "OwnerKey" = "8:_B1EFB4C47F8F4609A642141EC3CA5261"
+        "OwnerKey" = "8:_1D5696E0F66F4F4EBADC5F38A9304F04"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3D47F9EDA1AA1B28297E8B1EBAD69FD6"
-        "OwnerKey" = "8:_1D5696E0F66F4F4EBADC5F38A9304F04"
+        "OwnerKey" = "8:_B1EFB4C47F8F4609A642141EC3CA5261"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,6 +82,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4064B112ADA97D2E17993445EF37AD94"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_1D5696E0F66F4F4EBADC5F38A9304F04"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -101,12 +107,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_FBF408A812A1684BD1ADD89E500BCF53"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4064B112ADA97D2E17993445EF37AD94"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -140,6 +140,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -453,15 +461,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Autorunes"
-        "ProductCode" = "8:{AB9DA695-6A23-44D6-9F96-17A09BABB6C0}"
-        "PackageCode" = "8:{99AF4CE3-AA04-43E6-9635-92A1AFC2303F}"
+        "ProductCode" = "8:{E0AC7D90-6068-460D-81CB-8FE3FC593707}"
+        "PackageCode" = "8:{0C3949B7-B171-4D38-B926-96CDEE7C8098}"
         "UpgradeCode" = "8:{C334B272-D5F5-4AF4-8031-F8E0A440FDFB}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.0.0"
+        "ProductVersion" = "8:2.0.3"
         "Manufacturer" = "8:Yooooomi"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

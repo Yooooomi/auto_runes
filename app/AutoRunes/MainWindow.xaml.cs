@@ -32,15 +32,10 @@ namespace AutoRunes
 
         public MainWindow()
         {
-            File.AppendAllText("C:\\users\\timot\\output", "salut");
             string[] args = Environment.GetCommandLineArgs();
 
             if (args.Length > 1 && args[1].Contains("https://www.mobafire.com/league-of-legends/build/"))
             {
-                foreach(var i in args)
-                {
-                    File.AppendAllText("C:\\users\\timot\\output", i);
-                }
                 // args[2] is inGame
                 bool inChampSelect = args[2] == "True";
                 autorunes(args[1], inChampSelect, true, true, 200);
