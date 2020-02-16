@@ -25,7 +25,7 @@ namespace AutoRunes
     /// </summary>
     public partial class MainWindow : Window
     {
-        const String LeagueOfLegendsWindowName = "LeagueClientUx";
+        const string LeagueOfLegendsWindowName = "LeagueClientUx";
         readonly WindowManager windowManager = new WindowManager();
         readonly MouseManager mouseManager = new MouseManager();
         readonly Parser parser = new Parser();
@@ -44,9 +44,9 @@ namespace AutoRunes
 
             InitializeComponent();
 
-/*            windowManager.AssignWindow(LeagueOfLegendsWindowName);
+            windowManager.AssignWindow(LeagueOfLegendsWindowName);
             mouseManager.enableMouseClicks();
-            mouseManager.addListener(onMouseClick);*/
+            //mouseManager.addListener(onMouseClick);
         }
 
         private void onMouseClick(object sender, MouseEventExtArgs e)
@@ -59,27 +59,16 @@ namespace AutoRunes
 
         private void clickRune(Runes rune, bool isInChampSelect, int sleepTime, bool indentLeft = false)
         {
-            Runes realRune;
-            
-            if (rune.type != Runes.RuneType.Button)
-            {
-                realRune = Runes.GetRune(rune.type, rune.names[0]);
-            }
-            else
-            {
-                realRune = Runes.GetRune(rune.type, rune.names[0]);
-            }
-
             WindowManager.Rect rect = windowManager.GetWindowPos();
 
             if (indentLeft)
             {
-                realRune.position.x -= 50;
+                rune.position.x -= 50;
             }
 
-            Position convertedPos = Runes.TransferPositionResolution(realRune.position, 1600, 900, rect.Right - rect.Left, rect.Bottom - rect.Top);
+            Position convertedPos = Runes.TransferPositionResolution(rune.position, 1600, 900, rect.Right - rect.Left, rect.Bottom - rect.Top);
 
-            if (isInChampSelect == true && !realRune.position.alreadyTranslated)
+            if (isInChampSelect == true && !rune.position.alreadyTranslated)
             {
                 convertedPos.x += (int) (0.085 * (rect.Right - rect.Left));
             }
@@ -96,14 +85,7 @@ namespace AutoRunes
 
             ProfileRunes runes;
 
-            try
-            {
                 runes = parser.Parse(url);
-            }
-            catch
-            {
-                return;
-            }
 
             if (clickEditRune)
             {
@@ -112,12 +94,10 @@ namespace AutoRunes
 
             clickRune(Runes.GetRune(Runes.RuneType.Button, "square"), inChampSelect, sleepTime);
 
-            runes.primary.type = Runes.RuneType.PrimarySection;
             clickRune(runes.primary, inChampSelect, sleepTime);
-            for (int i = 0; i < 4; i++)
+            foreach (Runes i in runes.primaryRunes)
             {
-                runes.runes[i].type = Runes.RuneType.Primary;
-                clickRune(runes.runes[i], inChampSelect, sleepTime);
+                clickRune(i, inChampSelect, sleepTime);
             }
 
             bool indentLeft = false;
@@ -130,21 +110,23 @@ namespace AutoRunes
                 indentLeft = true;
             }
 
-            runes.secondary.type = Runes.RuneType.SecondarySection;
             clickRune(runes.secondary, inChampSelect, sleepTime, indentLeft);
-            for (int i = 4; i < 4 + 2; i++)
+            foreach (Runes i in runes.secondaryRunes)
             {
-                runes.runes[i].type = Runes.RuneType.Secondary;
-                clickRune(runes.runes[i], inChampSelect, sleepTime);
+                clickRune(i, inChampSelect, sleepTime);
             }
-            for (int i = 6; i < 6 + 3; i++)
+            foreach (Runes i in runes.shards)
             {
-                runes.runes[i].type = Runes.RuneType.Shard;
-                clickRune(runes.runes[i], inChampSelect, sleepTime);
+                clickRune(i, inChampSelect, sleepTime);
             }
+
             if (clickSave == true)
             {
-                clickRune(Runes.GetRune(Runes.RuneType.Button, "save"), inChampSelect, sleepTime);
+                clickRune(Runes.GetRune(Runes.RuneType.Button, "save"), inChampSelect, sleepTime * 2);
+                if (inChampSelect)
+                {
+                    clickRune(Runes.GetRune(Runes.RuneType.Button, "close"), inChampSelect, sleepTime);
+                }
             }
         }
 

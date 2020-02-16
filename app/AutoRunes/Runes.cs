@@ -42,8 +42,9 @@ namespace AutoRunes
         static public List<Runes> buttons = new List<Runes>
         {
             new Runes(RuneType.Button, new List<String>() { "save" }, new Position(500, 161)),
-            new Runes(RuneType.Button, new List<String>() { "edit_rune" }, new Position(496, 864, true)),
+            new Runes(RuneType.Button, new List<String>() { "edit_rune" }, new Position(530, 852, true)),
             new Runes(RuneType.Button, new List<String>() { "square" }, new Position(93, 844)),
+            new Runes(RuneType.Button, new List<String>() { "close" }, new Position(1454, 93, true)),
         };
 
         static public List<Runes> runes = new List<Runes>
@@ -120,11 +121,11 @@ namespace AutoRunes
         {
             if (type == RuneType.Button)
             {
-                return Runes.buttons.Find(e => e.type == type && e.names.Contains(name));
+                return Runes.buttons.Find(e => e.type == type && e.names.Contains(name.ToLower()));
             }
             else
             {
-                return Runes.runes.Find(e => e.type == type && e.names.Contains(name));
+                return Runes.runes.Find(e => e.type == type && e.names.Contains(name.ToLower()));
             }
         }
 
@@ -170,13 +171,37 @@ namespace AutoRunes
     {
         public Runes primary;
         public Runes secondary;
-        public List<Runes> runes;
+        public List<Runes> primaryRunes;
+        public List<Runes> secondaryRunes;
+        public List<Runes> shards;
 
         public ProfileRunes(Runes p, Runes s, List<Runes> runes)
         {
+            p.type = Runes.RuneType.PrimarySection;
+            s.type = Runes.RuneType.SecondarySection;
+
             this.primary = p;
             this.secondary = s;
-            this.runes = runes;
+
+            primaryRunes = new List<Runes>();
+            secondaryRunes = new List<Runes>();
+            shards = new List<Runes>();
+
+            foreach (var i in runes)
+            {
+                if (i.type == Runes.RuneType.Primary)
+                {
+                    primaryRunes.Add(i);
+                }
+                else if (i.type == Runes.RuneType.Secondary)
+                {
+                    secondaryRunes.Add(i);
+                }
+                else if (i.type == Runes.RuneType.Shard)
+                {
+                    shards.Add(i);
+                }
+            }
         }
     }
 }

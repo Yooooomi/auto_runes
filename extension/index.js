@@ -60,8 +60,10 @@ chrome.tabs.onActivated.addListener((infos) => {
     chrome.tabs.get(infos.tabId, (tab) => checkIcon(tab.url));
 });
 
-chrome.webNavigation.onCompleted.addListener((infos) => {
-    checkIcon(infos.url);
+chrome.tabs.onUpdated.addListener((tabId, details, tab) => {
+    if (!tab.active) return;
+    if (!details.url) return;
+    checkIcon(details.url);
 });
 
 chrome.runtime.onInstalled.addListener(function() {

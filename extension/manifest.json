@@ -1,7 +1,7 @@
 {
     "name": "Autorunes",
     "author": "Yooooomi",
-    "version": "1.0",
+    "version": "1.0.2",
     "description": "Extension to interact directly with native Autorunes APP",
     "manifest_version": 2,
     "icons": {
