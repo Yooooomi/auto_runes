@@ -1,9 +1,10 @@
 
 # Autorunes
 
-Autorunes is a program that scraps mobafire guides to create automatically your runes pages.
+Autorunes is a program that scraps [Mobafire](https://www.mobafire.com) guides to create automatically your runes pages.
+It'll detect the guide and build your rune page automatically by clicking the right runes for you !
 
-You can use the standalone Windows application by pasting the guide link into it or use the [Chrome extension](https://chrome.google.com/webstore/detail/autorunes/pefheflffhfnmoeiamhofclgpcolppnc) to be able to create the rune page by one click from the guide page !
+You can use the standalone Windows application by pasting the guide link into it or use the [Chrome extension](https://chrome.google.com/webstore/detail/autorunes/pefheflffhfnmoeiamhofclgpcolppnc)(_Recommended_) to be able to create the rune page by one click from the guide page !
 
 # Prerequisites
 
@@ -25,7 +26,7 @@ You can use the standalone Windows application by pasting the guide link into it
 2) Paste the guide link into the input
 3) Click the __Build__ button to build your rune page
 
-## Chrome extension
+## Chrome extension (_Recommended_)
 
 > Of course, the native application has to be installed on the computer for the extension to work, the extension just communicates to the core _Autorune_ application
 
