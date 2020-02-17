@@ -1,4 +1,8 @@
 
+<p align='center'>
+  <img width="70%" src="https://media.giphy.com/media/Y4QGumZm1s48uXELYF/giphy.gif">
+</p>
+
 # Autorunes
 
 Autorunes is a program that scraps [Mobafire](https://www.mobafire.com) guides to create automatically your runes pages.
